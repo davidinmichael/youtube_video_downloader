@@ -20,3 +20,24 @@ def get_popular_videos():
     )
     response = request.execute()
     return response
+
+
+def search_video(search_keys):
+    request = youtube.search().list(
+        part="snippet",
+        maxResults=50,
+        q=search_keys
+    )
+    response = request.execute()
+    return response
+
+
+def search_pagination(search_keys, page_token):
+    request = youtube.search().list(
+        part="snippet",
+        maxResults=50,
+        q=search_keys,
+        pageToken=page_token
+    )
+    response = request.execute()
+    return response
