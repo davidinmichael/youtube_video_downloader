@@ -4,22 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/video-downloader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Video Downloader</title>
 </head>
 <body>
-    <nav>
-        <div>
-            <img src="" alt="">
-            <p>Home</p>
+    <div class="container">
+
+        <div class="content">
+            {% include "nav-main.html" %}
+            {% block content %}
+            
+            {% endblock content %}
         </div>
-        <div class="search">
-            <form action="">
-                <input id="search_field" type="text" name="search_keys" placeholder="Search Video">
-                <input type="submit" value="Search">
-            </form>
-        </div>
-    </nav>
-    
+        
+        {% include "footer.html" %}
+    </div>
 </body>
 </html>

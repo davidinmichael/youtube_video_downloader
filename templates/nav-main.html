@@ -1,0 +1,19 @@
+
+{% load static %}
+
+<nav class="nav-main">
+  <div class="nav-left">
+    <img id="logo" src="{% static 'images/logo.png' %}" alt="d_AdvanTech Logo" />
+    <p><a href="{% url 'downloader:home' %}">Home</a></p>
+  </div>
+    <form class="search" action="{% url 'api_downloader:search_video' %}">
+        {% csrf_token %}
+      <input
+        id="search-field"
+        type="text"
+        name="search_keys"
+        placeholder="Search Video"
+      />
+      <input id="submit-btn" type="submit" value="Search" />
+    </form>
+</nav>

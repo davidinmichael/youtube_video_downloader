@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="video-wrapper">
+  <h1>Video Information</h1>
+  <div class="video-box">
+    <iframe
+        src="https://www.youtube.com/embed/{{ items.0.id }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <p>{{items.0.snippet.title}}</p>
+  </div>
+</div>
+
+{% endblock content %}

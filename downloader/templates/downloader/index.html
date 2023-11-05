@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="index-wrapper">
+  <h1>{{ head }}</h1>
+  <div class="most-popular">
+    {% for item in items|slice:":10" %}
+    <div class="thumbnail">
+      <iframe
+        src="https://www.youtube.com/embed/{{ item.id }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <!-- <img
+          src="{{ item.snippet.thumbnails.default.url }}"
+          alt="{{ item.snippet.title}}"
+        /> -->
+      <p>{{ item.snippet.title }}</p>
+      <a
+        href="{% url 'downloader:get_video' %}?video_id={{ item.id }}"
+        class="btn"
+        >Play</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
