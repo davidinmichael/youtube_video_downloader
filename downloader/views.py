@@ -1,6 +1,9 @@
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+import threading
+
+from flask import redirect
 from api_downloader.utils import *
 import requests
 
@@ -43,5 +46,20 @@ def search_videos(request):
 
 def download_videos(request):
     video_id = request.GET.get("video_id")
+    prev_page = request.META.get('HTTP_REFERER')
+    # download_thread = threading.Thread(target=download_video, args=(video_id,))
+    # download_thread.start()
     download_video(video_id)
-    return HttpResponse(status=200)
+    return HttpResponseRedirect(prev_page or '/')
+
+# def download_videos(request):
+#     video_id = request.GET.get("video_id")
+#     prev_page = request.META.get('HTTP_REFERER')
+    
+#     def download_video_thread(video_id):
+#         download_video(video_id)
+
+#     download_thread = threading.Thread(target=download_video_thread, args=(video_id,))
+#     download_thread.start()
+    
+#     return redirect(prev_page or '/')

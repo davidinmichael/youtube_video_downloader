@@ -13,11 +13,8 @@
         allowfullscreen
       ></iframe>
       <p>{{ item.snippet.title }}</p>
-      <a
-        href="/download/?video_id={{ item.id.videoId }}"
-        class="btn"
-        >Download</a
-      >
+      
+      <a href="{% url 'downloader:get_video' %}?video_id={{ item.id.videoId }}" class="btn">Download</a>
     </div>
     {% endfor %}
   </div>
