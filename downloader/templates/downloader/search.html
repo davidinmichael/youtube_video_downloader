@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="index-wrapper">
+  <h1>Search Results</h1>
+  <div class="most-popular">
+    {% for item in items %}
+    <div class="thumbnail">
+      <iframe
+        src="https://www.youtube.com/embed/{{ item.id.videoId }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <p>{{ item.snippet.title }}</p>
+      <a
+        href="/download/?video_id={{ item.id.videoId }}"
+        class="btn"
+        >Download</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="btn-wrapper">
+      {% if data.prevPageToken %}
+      <a href="/search/?search_keys={{ search_key }}&page_token={{ data.prevPageToken }}" class="btn-paginate">Prev</a>
+      {% endif %}
+      {% if data.nextPageToken %}
+      <a href="/search/?search_keys={{ search_key }}&page_token={{ data.nextPageToken }}" class="btn-paginate">Next</a>
+      {% endif %}
+  </div>
+</div>
+
+{% endblock content %}

@@ -12,10 +12,6 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-      <!-- <img
-          src="{{ item.snippet.thumbnails.default.url }}"
-          alt="{{ item.snippet.title}}"
-        /> -->
       <p>{{ item.snippet.title }}</p>
       <a
         href="{% url 'downloader:get_video' %}?video_id={{ item.id }}"

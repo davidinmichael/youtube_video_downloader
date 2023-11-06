@@ -6,7 +6,7 @@
     <img id="logo" src="{% static 'images/logo.png' %}" alt="d_AdvanTech Logo" />
     <p><a href="{% url 'downloader:home' %}">Home</a></p>
   </div>
-    <form class="search" action="{% url 'api_downloader:search_video' %}">
+    <form class="search" action="{% url 'downloader:search_video' %}" method="POST">
         {% csrf_token %}
       <input
         id="search-field"

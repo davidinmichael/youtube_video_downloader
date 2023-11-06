@@ -78,7 +78,7 @@ body {
   }
 
   .btn {
-    padding: 0.2rem 0.4rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 2rem 1rem;
     background-color: black;
     color: white;
@@ -94,6 +94,38 @@ body {
   }
 
   .thumbnail iframe {
-    border-radius: 5rem;
+    border-radius: 1rem 1rem 0 0;
     width: 100%;
   }
+
+  .video-wrapper {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-box iframe {
+    width: 100%;
+  }
+
+  .index-wrapper {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+  }
+
+.btn-paginate {
+    padding: 0.5rem 0.8rem;
+    border-radius: 2rem 1rem;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin: 1rem;
+}
