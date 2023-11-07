@@ -7,39 +7,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
     steps:
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+      - name: Update ubuntu repos with curl installation
+        run: sudo apt update -y && sudo apt install -y curl
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
+      - name: Install python3 and pip3
+        run: sudo apt install -y python3-full
+
+      - name: Install NodeJS
+        run: cd ~ && curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install -y nodejs
 
       - name: Install pm2
-        run: npm install pm2@latest -g
+        run: sudo npm install pm2@latest -g
 
-      - name: Create virtual environment
-        run: python -m venv venv
+      - name: create virtual environment
+        run: python3 -m venv venv
 
-      - name: Install dependencies in virtual environment
-        run: source venv/bin/activate && pip install -r requirements.txt
+      - name: Install depenendencies in virtual env
+        run: ~/code/venv/bin/pip3 install -r requirements.txt
 
       - name: Run migrations
-        run: source venv/bin/activate && python manage.py migrate
+        run: ~/code/venv/bin/python3 manage.py migrate
 
   deploy:
-    runs-on: ubuntu-latest
-
     steps:
       - name: Start App with pm2
-        run: |
-          source venv/bin/activate
-          pm2 start "python manage.py runserver" --name "youtube_video_downloader"
+        run: pm2 start "~/code/venv/bin/python3 manage.py runserver"
 
       - name: Save pm2 config
         run: pm2 save
