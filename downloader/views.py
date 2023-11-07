@@ -2,8 +2,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 import threading
-
-from flask import redirect
 from api_downloader.utils import *
 import requests
 
