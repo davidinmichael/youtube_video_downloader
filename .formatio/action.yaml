@@ -39,7 +39,7 @@ jobs:
       - name: Start App with pm2
         run: |
           source venv/bin/activate
-          pm2 start "python manage.py runserver"
+          pm2 start "python manage.py runserver" --name "youtube_video_downloader"
 
       - name: Save pm2 config
         run: pm2 save
