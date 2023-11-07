@@ -12,7 +12,7 @@ jobs:
         run: sudo apt update -y && sudo apt install -y curl
 
       - name: Install python3 and pip3
-        run: sudo apt install -y python3.11 python3-pip
+        run: sudo apt install -y python3.11 python3-pip python3.11-venv
 
       - name: Install NodeJS
         run: cd ~ && curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh && sudo bash /tmp/nodesource_setup.sh && sudo apt install -y nodejs
